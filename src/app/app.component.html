@@ -4,11 +4,26 @@
   <div class="row">
     <div class="col-xs-12">
       <app-server-element [srvElement]="item" *ngFor="let item of serverElements">
-        <p>
+        <p #contentParagraph>
           <strong *ngIf="item.type === 'server'" style="color: red">{{ item.content }}</strong>
           <em *ngIf="item.type === 'blueprint'">{{ item.content }}</em>
-      </p>
+        </p>
       </app-server-element>
     </div>
   </div>
+</div>
+
+
+<hr>
+<div class="container">
+  <app-game-control (intervalFired)="onIntervalFired($event)"></app-game-control>
+  <div class="float-container">
+      <div style="background-color: aqua" class="float-child">
+    <app-odd *ngFor="let item of oddNumbers" [number]="item"></app-odd>
+  </div>
+  <div style="background-color: gold" class="float-child">
+    <app-even *ngFor="let item of evenNumbers" [number]="item"></app-even>
+  </div>
+  </div>
+
 </div>
